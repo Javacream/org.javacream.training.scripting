@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>Taschenrechner</title>
+</head>
+
+<script>
+function dazu(zahl)
+{
+	anzeige = document.getElementById("Anzeige");
+	anzeige.value= anzeige.value+zahl;
+}
+
+function reset()
+{
+	document.getElementById("Anzeige").value="";
+}
+
+function zwischensumme(verfahren)
+{
+	document.getElementById("zwischensumme2").value=document.getElementById("Anzeige").value;
+	document.getElementById("verfahren").value= verfahren;
+reset();
+}
+
+function rechnen()
+{
+	zahl2=parseFloat(document.getElementById("Anzeige").value);
+	zahl1=parseFloat(document.getElementById("zwischensumme2").value);
+
+	switch (document.getElementById("verfahren").value) {
+	  case "+":
+	   document.getElementById("Anzeige").value=String(zahl1+zahl2);
+	   break;
+	  case "-":
+	    document.getElementById("Anzeige").value=String(zahl1-zahl2);
+		break;
+	  case "*":
+	    document.getElementById("Anzeige").value=String(zahl1*zahl2);
+	    break;
+	  case "/":
+	    document.getElementById("Anzeige").value=String(zahl1/zahl2);
+	    break;
+	}
+
+	document.getElementById("zwischensumme2").value="0";
+}
+</script>
+
+<body>
+
+<form method="post" action="">
+  <table width="200" border="1">
+    <tr>
+      <td width="100%" colspan="4"><input id="Anzeige" type="text" name="T1" size="20" style="text-align:right"></td>
+    </tr>
+    <tr>
+      <td width="25%"><input type="button" value="1" name="B1" onclick="dazu('1')"></td>
+      <td width="25%"><input type="button" value="2" name="B2" onclick="dazu('2')"></td>
+      <td width="25%"><input type="button" value="3" name="b3" onclick="dazu('3')"></td>
+      <td width="25%"><input type="button" value="+" name="pl" onclick="zwischensumme('+')"></td>
+    </tr>
+    <tr>
+      <td width="25%"><input type="button" value="4" name="B4" onclick="dazu('4')"></td>
+      <td width="25%"><input type="button" value="5" name="B5" onclick="dazu('5')"></td>
+      <td width="25%"><input type="button" value="6" name="B6" onclick="dazu('6')"></td>
+      <td width="25%"><input type="button" value="-" name="mi" onclick="zwischensumme('-')"></td>
+    </tr>
+    <tr>
+      <td width="25%"><input type="button" value="7" name="B7" onclick="dazu('7')"></td>
+      <td width="25%"><input type="button" value="8" name="B8" onclick="dazu('8')"></td>
+      <td width="25%"><input type="button" value="9" name="B9" onclick="dazu('9')"></td>
+      <td width="25%"><input type="button" value="*" name="ma" onclick="zwischensumme('*')"></td>
+    </tr>
+    <tr>
+      <td width="25%"><input type="button" value="0" name="B0" onclick="dazu('0')"></td>
+      <td width="25%">&nbsp;</td>
+      <td width="25%">&nbsp;</td>
+      <td width="25%"><input type="button" value="/" name="ge" onclick="zwischensumme('/')"></td>
+    </tr>
+    <tr>
+      <td width="25%">&nbsp;</td>
+      <td width="25%">&nbsp;</td>
+      <td width="25%"><input type="button" value="C" name="clear" onClick="reset()"></td>
+      <td width="25%"><input type="button" value="=" name="rechne" onClick="rechnen()"></td>
+      <input id="verfahren" type="hidden" name="verfahren2" value="">
+      <input id="zwischensumme2" type="hidden" name="zwischensumme2" value="">
+            
+    </tr>
+  </table>
+</form>
+
+</body>
+
+</html>

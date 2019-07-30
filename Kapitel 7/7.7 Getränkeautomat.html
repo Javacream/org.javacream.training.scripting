@@ -1,0 +1,138 @@
+<html>
+  <head>
+    <title>Getränkeautomat</title>
+  </head>
+  <body>
+    <script>
+      <!--
+
+      function drinkoutput() {
+        selcharge = window.document.automat.charge;
+        inpinsert = window.document.automat.insertcoins;
+        texoutput = window.document.automat.output;
+        seldrink = window.document.automat.drink
+        i = seldrink.options.selectedIndex 
+        vardrink = seldrink.options[i].text
+
+        if ( selcharge.options[0].text == inpinsert.value ) {
+          varAusgabe = "Vielen Dank!" + "\n" + "Hier kommt Ihr " + vardrink;
+          texoutput.value = varAusgabe;
+          inpinsert.value = '';
+        }
+        else {
+          varAusgabe = "Bitte korrekten Geldbetrag einwerfen!";
+          texoutput.value = varAusgabe;
+          inpinsert.value = '';
+        }     
+      }
+
+      function getAdditionals() { 
+
+        window.status = 'Verweis zur Startseite';
+
+	// Eingabefeld Preis
+	charge = window.document.automat.charge;
+
+        // Objektverweis auf Listenfelder setzen 
+	seladditional = window.document.automat.additional;
+        seldrink = window.document.automat.drink;
+        
+        // Listenfeld additional leeren
+        seladditional.options.length = 1;
+        window.document.automat.output.value = '';
+
+	
+        // Listenfeld additional füllen
+        var i=seldrink.options.selectedIndex
+        switch ( seldrink.options[i].text )
+          {
+          case 'Kaffee':
+            seladditional.options[1] = new Option( 'Milch' );
+            seladditional.options[2] = new Option( 'Zucker' );
+            seladditional.options[3] = new Option( 'Milch und Zucker' );
+	    seladditional.focus(); 
+            charge.value = '50'
+            break;
+          case 'Tee':
+            seladditional.options[1] = new Option( 'Zitrone' );
+	    seladditional.focus();
+            charge.value = '40'
+            break;
+          case 'Mineralwasser':
+            charge.value = '30'            
+            break;
+          default:
+            charge.value = '---'
+            break;
+          } 
+        } 
+      -->
+    </script>
+    <table cellpadding="4" cellspacing="0" border="0" bgcolor="#caffee">
+      <colgroup>
+        <col width="270" />
+        <col width="200" />
+        <col width="30" />
+      </colgroup>
+      <tbody>
+        <tr height="30">
+          <td style="background-color:#280965;color:#FFFFFF;" 
+            colspan="3" >Getr&auml;nkeautomat</td>
+        </tr>
+        <tr><td colspan="4">&nbsp;&nbsp;&nbsp;</td></tr>
+        <form name="automat" method="post" action="">
+          <tr>
+            <td style="text-align:right;">Bitte Getr&auml;nk w&auml;hlen</td>
+            <td>
+              <select name="drink" size="1" style="width:200" 
+                onChange='javascript:getAdditionals()'> 
+                <option>(bitte ausw&auml;hlen)</option>
+		<option value="1">Kaffee</option> 
+		<option value="2">Tee</option> 
+		<option value="3">Mineralwasser</option> 
+              </select> 
+            </td> 	
+          </tr>
+          <tr>
+            <td style="text-align:right;">mit</td> 
+            <td> 
+              <select name="additional" size="1" style="width:200;">
+                <option>(bitte auswählen)</option> 
+              </select> 
+            </td> 
+          </tr>
+          <tr>
+            <td style="text-align:right;">Preis</td> 
+            <td>
+              <input type="text" readonly="readonly" name="charge" style="width:200;">
+            </td> 
+          </tr>
+          <tr height="40" />
+          <tr>
+            <td style="text-align:right;">Geldeinwurf</td> 
+            <td> 
+              <input name="insertcoins" size="1" style="width:200;"
+                onFocus="this.style.backgroundColor='#66AAAA'"
+                onBlur="this.style.backgroundColor='#ffffff'"/>              
+            </td> 
+          </tr>
+          <tr height="100" />
+          <tr height="30">
+           <td />
+           <td> 
+              <input type="button" name="getdrink" value="Getr&auml;nk ausgeben" 
+                style="width:200;" onClick='javascript:drinkoutput()'/>              
+            </td> 
+          </tr>      
+          <tr>
+            <td style="text-align:right;">Getr&auml;nkeausgabe</td> 
+            <td> 
+              <textarea name="output" cols="30" rows="3" 
+                style="width:200;font-family:Verdana;font-size:12;"></textarea>
+            </td> 
+          </tr>
+        </form>
+      <tbody>
+    </table>
+  </body>
+</html>
